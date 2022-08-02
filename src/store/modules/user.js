@@ -7,7 +7,6 @@ export default {
   state: {
     clientToken: "",
     token: "",
-    error: "",
   },
   mutations: {
     setclientToken(state, payload) {
