@@ -1,0 +1,23 @@
+{
+  "id": "3558029",
+  "name": "likede",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2076279",
+      "name": " 安全中心",
+      "font_class": "anquanzhongxin",
+      "unicode": "e895",
+      "unicode_decimal": 59541
+    },
+    {
+      "icon_id": "7708024",
+      "name": "眼睛_闭",
+      "font_class": "yanjing_bi",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    }
+  ]
+}
