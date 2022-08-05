@@ -19,6 +19,9 @@ import '@/permission' // permission control
 // 自定义指令
 import * as directives from '@/directives'
 
+var dayjs = require('dayjs')
+Vue.prototype.dayjs = dayjs
+
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()

@@ -1,7 +1,7 @@
 import { login, getUserInfo } from '@/api/user'
 import { Message } from 'element-ui'
 import router from '@/router'
-import {setTokenTime} from '@/utils/auth'
+import { setTokenTime } from '@/utils/auth'
 export default {
   namespaced: true,
   state: {
@@ -22,7 +22,8 @@ export default {
       try {
         const res = await login(context.state.clientToken, ruleForm)
         if (res.data.success) {
-          const info = await getUserInfo(res.data.token, res.data.userId)
+          context.commit('setLoginInfo', { ...res.data})
+          const info = await getUserInfo(res.data.userId)
           context.commit('setLoginInfo', { ...res.data, ...info.data })
           router.push('/')
         } else {

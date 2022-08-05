@@ -28,11 +28,8 @@ export function imageCode(clientToken) {
 }
 
 // 获取用户基本信息
-export function getUserInfo(token, id) {
+export function getUserInfo(id) {
   return request({
-    headers: {
-      Authorization: token
-    },
     url: '/api/user-service/user/' + id
   })
 }

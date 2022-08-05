@@ -7,10 +7,13 @@ const service = axios.create({
 })
 
 // request interceptor
-service.interceptors.request.use()
+service.interceptors.request.use((config) => {
+  console.log(store.state.user.loginInfo);
+  config.headers['Authorization'] = store.state.user.loginInfo.token
+  return config
+})
 
 // response interceptor
-service.interceptors.response.use(
-)
+service.interceptors.response.use()
 
 export default service
