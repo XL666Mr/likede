@@ -71,61 +71,60 @@
 </template>
 
 <script>
-import URL from "@/utils/url";
-import { imageCode } from "@/api/user";
-import { createNamespacedHelpers } from "vuex";
+import URL from '@/utils/url'
+import { imageCode } from '@/api/user'
+import { createNamespacedHelpers } from 'vuex'
 const { mapActions: mapUserActions, mapMutations: mapUserMutations } =
-  createNamespacedHelpers("user");
+  createNamespacedHelpers('user')
 export default {
   data() {
     return {
       url: URL,
       isShow: false,
-      imgUrl: "",
+      imgUrl: '',
       clientToken: Number,
       ruleForm: {
-        pass: "admin",
-        checkPass: "admin",
-        verificationCode: "",
+        pass: 'admin',
+        checkPass: 'admin',
+        verificationCode: ''
       },
       rules: {
         pass: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          { required: true, message: '请输入用户名', trigger: 'blur' },
           {
             pattern: /^[a-zA-Z0-9_-]{4,16}$/,
-            message: "4到16位字母,数字,下划线,减号",
-            trigger: "blur",
-          },
+            message: '4到16位字母,数字,下划线,减号',
+            trigger: 'blur'
+          }
         ],
-        checkPass: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        checkPass: [{ required: true, message: '请输入密码', trigger: 'blur' }],
         verificationCode: [
-          { required: true, message: "请输入验证码", trigger: "blur" },
-        ],
-      },
-    };
+          { required: true, message: '请输入验证码', trigger: 'blur' }
+        ]
+      }
+    }
   },
   created() {
-    this.imageCodeFn();
+    this.imageCodeFn()
   },
   methods: {
-    ...mapUserActions(["getLoginList", "getclientToken"]),
+    ...mapUserActions(['getLoginList', 'getclientToken']),
     // 登录
     async submitForm() {
       try {
-        await this.$refs.ruleForm.validate();
-        this.getLoginList(this.ruleForm, this.clientToken);
-        await this.$refs.ruleForm.resetFields();
+        await this.$refs.ruleForm.validate()
+        await this.getLoginList(this.ruleForm, this.clientToken)
       } catch (error) {
-        this.imageCodeFn();
-        console.log(error);
+        this.imageCodeFn()
+        console.log(error)
       }
     },
     // 图片验证码
     async imageCodeFn() {
-      this.clientToken = Math.random();
-      this.getclientToken(this.clientToken);
-      const res = await imageCode(this.clientToken);
-      this.imgUrl = res.request.responseURL;
+      this.clientToken = Math.random()
+      this.getclientToken(this.clientToken)
+      const res = await imageCode(this.clientToken)
+      this.imgUrl = res.request.responseURL
     },
     isShowFn() {
       // console.log(this.$refs["paw"]);
@@ -134,20 +133,20 @@ export default {
       //   return commit.call(store, type, payload, options);
       // }
       // console.log(this.$refs["paw"]._props.showPassword);
-      this.isShow = !this.isShow;
+      this.isShow = !this.isShow
     },
     changeImg() {
-      this.imageCodeFn();
-    },
-  },
-};
+      this.imageCodeFn()
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .login-container {
   position: relative;
   min-height: 100%;
   min-width: 100%;
-  background-image: url("http://likede2-admin.itheima.net/img/background.be4fae7d.png");
+  background-image: url('http://likede2-admin.itheima.net/img/background.be4fae7d.png');
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;

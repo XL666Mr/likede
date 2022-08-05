@@ -1,28 +1,38 @@
-import request from "@/utils/request";
+import request from '@/utils/request'
 
 export function login(clientToken, ruleForm) {
   return request({
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json'
     },
-    url: "/api/user-service/user/login",
-    method: "post",
+    url: '/api/user-service/user/login',
+    method: 'post',
     data: {
       clientToken: clientToken,
       code: ruleForm.verificationCode,
       loginName: ruleForm.pass,
       loginType: 0,
-      password: ruleForm.checkPass,
-    },
-  });
+      password: ruleForm.checkPass
+    }
+  })
 }
 
 // 图片验证码
 export function imageCode(clientToken) {
   return request({
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json'
     },
-    url: `/api/user-service/user/imageCode/${clientToken}`,
-  });
+    url: `/api/user-service/user/imageCode/${clientToken}`
+  })
+}
+
+// 获取用户基本信息
+export function getUserInfo(token, id) {
+  return request({
+    headers: {
+      Authorization: token
+    },
+    url: '/api/user-service/user/' + id
+  })
 }
