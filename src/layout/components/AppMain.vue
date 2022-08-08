@@ -30,6 +30,8 @@ export default {
 }
 .fixed-header + .app-main {
   padding-top: 50px;
+  padding-left: 167px;
+  /* margin-left: 500px */
 }
 </style>
 

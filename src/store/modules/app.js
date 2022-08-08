@@ -11,7 +11,7 @@ const state = {
 const mutations = {
   TOGGLE_SIDEBAR: state => {
     state.sidebar.opened = !state.sidebar.opened
-    state.sidebar.withoutAnimation = false
+    state.sidebar.withoutAnimation = true
     if (state.sidebar.opened) {
       Cookies.set('sidebarStatus', 1)
     } else {
@@ -19,7 +19,7 @@ const mutations = {
     }
   },
   CLOSE_SIDEBAR: (state, withoutAnimation) => {
-    Cookies.set('sidebarStatus', 0)
+    Cookies.set('sidebarStatus', 1)
     state.sidebar.opened = true
     state.sidebar.withoutAnimation = withoutAnimation
   },

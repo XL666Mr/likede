@@ -10,7 +10,12 @@
         :cell-style="row"
         :header-cell-style="headRow"
       >
-        <el-table-column label="序号" type="index" fixed="left">
+        <el-table-column
+          label="序号"
+          type="index"
+          fixed="left"
+          :index="indexMethod"
+        >
         </el-table-column>
         <div v-for="(item, index) in taskListName" :key="index">
           <el-table-column
@@ -29,7 +34,20 @@
         </el-table-column>
       </el-table>
       <!-- 分页 -->
-      <myPagination></myPagination>
+      <myPagination :currentObjs="currentObj">
+        <div slot="button">
+          <el-button
+            style="background: #d5ddf8 !important; color: #655b56"
+            @click.native="$store.commit('task/addPageIndex')"
+            >上一页</el-button
+          >
+          <el-button
+            style="background: #d5ddf8 !important; color: #655b56"
+            @click.native="$store.commit('task/reducePageIndex')"
+            >下一页</el-button
+          >
+        </div>
+      </myPagination>
     </el-card>
   </div>
 </template>
@@ -57,12 +75,21 @@ export default {
     tableData: {
       type: Array,
       required: true
+    },
+    currentObj: {
+      type: Object,
+      required: true
     }
   },
 
   created() {},
 
-  methods: {},
+  methods: {
+    indexMethod(index) {
+      console.log(index)
+      return index + 1 + 10 * this.$store.state.task.pageIndex
+    }
+  },
 
   computed: {},
 

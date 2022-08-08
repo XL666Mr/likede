@@ -1,15 +1,13 @@
 <template>
   <div>
     <div class="footer">
-      <div>共963条记录 第 4/97 页</div>
       <div>
-        <el-button style="background: #d5ddf8 !important; color: #655b56"
-          >上一页</el-button
-        >
-        <el-button style="background: #d5ddf8 !important; color: #655b56"
-          >下一页</el-button
-        >
+        共{{ currentObjs.totalCount }}条记录 第 {{ currentObjs.pageIndex }}/{{
+          currentObjs.totalPage
+        }}
+        页
       </div>
+      <slot name="button"></slot>
     </div>
   </div>
 </template>
@@ -19,10 +17,22 @@ export default {
   data() {
     return {}
   },
-
+  props: {
+    currentObjs: {
+      type: Object,
+      required: true
+    }
+  },
   created() {},
 
-  methods: {},
+  methods: {
+    reduce() {
+      console.log('reduce')
+    },
+    add() {
+      console.log('add')
+    }
+  },
 
   computed: {}
 }
