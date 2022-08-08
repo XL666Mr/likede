@@ -42,7 +42,7 @@
         </template>
       </el-table-column>
       <!-- 底部 -->
-      <tablePagination slot="Pagination" :currentObjs="currentObjs">
+      <tablePagination slot="Pagination" :currentObjs="currentObjs" :pageIndex='pageIndexs'>
         <div slot="button">
           <el-button
             style="background: #d5ddf8 !important; color: #655b56"

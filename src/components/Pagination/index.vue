@@ -2,7 +2,7 @@
   <div>
     <div class="footer">
       <div>
-        共{{ currentObjs.totalCount }}条记录 第 {{ currentObjs.pageIndex }}/{{
+        共{{ currentObjs.totalCount }}条记录 第 {{ pageIndex }}/{{
           currentObjs.totalPage
         }}
         页
@@ -20,6 +20,10 @@ export default {
   props: {
     currentObjs: {
       type: Object,
+      required: true
+    },
+    pageIndex: {
+      type: String,
       required: true
     }
   },
